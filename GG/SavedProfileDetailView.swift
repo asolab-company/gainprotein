@@ -6,6 +6,7 @@ struct SavedProfileDetailView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var navigateToNewCalculation = false
+    @State private var showSources = false // Navigation state
     
     var body: some View {
         ZStack {
@@ -99,6 +100,29 @@ struct SavedProfileDetailView: View {
                     .padding()
                     .background(Color.black.opacity(0.8))
                 }
+                
+                // Disclaimer Footer (Pinned at very bottom)
+                VStack(spacing: 8) {
+                    Text("This calculation is for informational purposes only and does not replace professional medical advice.")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+                    
+                    Button(action: {
+                        showSources = true
+                    }) {
+                        Text("Sources")
+                            .font(.caption)
+                            .foregroundColor(.ggOrange)
+                    }
+                    
+                    NavigationLink(destination: SourcesView(), isActive: $showSources) {
+                        EmptyView()
+                    }
+                }
+                .padding(.bottom, 10)
+                .padding(.top, 10)
             }
         }
         .navigationBarHidden(true)
