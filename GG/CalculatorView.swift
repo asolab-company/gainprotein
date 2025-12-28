@@ -5,6 +5,8 @@ struct CalculatorView: View {
     @FocusState private var isInputFocused: Bool
     @Environment(\.dismiss) var dismiss
     
+    @State private var showSources = false // Navigation state
+    
     // Derived state to check if result is shown
     var isResultShown: Bool {
         return viewModel.resultProtein != nil
@@ -117,11 +119,11 @@ struct CalculatorView: View {
                             )
                         }
                         
-                        Spacer(minLength: 100)
+                        Spacer(minLength: 50)
                     }
                     .padding()
                 }
-                
+
                 // Pinned Results/Button Section
                 VStack(spacing: 0) {
                     if let protein = viewModel.resultProtein {
@@ -165,6 +167,29 @@ struct CalculatorView: View {
                         }
                     }
                 }
+                
+                // Disclaimer Footer (Pinned at very bottom)
+                VStack(spacing: 8) {
+                    Text("This calculation is for informational purposes only and does not replace professional medical advice.")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+                    
+                    Button(action: {
+                        showSources = true
+                    }) {
+                        Text("Sources")
+                            .font(.caption)
+                            .foregroundColor(.ggOrange)
+                    }
+                    
+                    NavigationLink(destination: SourcesView(), isActive: $showSources) {
+                        EmptyView()
+                    }
+                }
+                .padding(.bottom, 10)
+                .padding(.top, 10)
             }
         }
         .navigationBarHidden(true)
