@@ -1,4 +1,4 @@
-import SwiftUI
+    import SwiftUI
 
 struct SourcesView: View {
     @Environment(\.dismiss) var dismiss
@@ -39,7 +39,7 @@ struct SourcesView: View {
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                             
-                            Text("This estimate is calculated based on your body weight, activity level, age, sex, and fitness goal, using scientifically recognized nutritional guidelines.")
+                            Text("This estimate is calculated based on your body weight, activity level, age, and fitness goal, using scientifically recognized nutritional guidelines.")
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
                                 .fixedSize(horizontal: false, vertical: true)
@@ -52,7 +52,7 @@ struct SourcesView: View {
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                             
-                            Text("The protein intake calculation is derived from established research and recommendations in sports nutrition and health science.\nProtein needs are adjusted based on factors such as physical activity level, muscle-building goals, age-related muscle preservation, and biological sex.\nThe calculation follows a protein intake range commonly recommended for individuals engaging in moderate physical activity and muscle gain goals.")
+                            Text("The protein intake calculation is derived from established research and recommendations in sports nutrition and health science.\nProtein needs are adjusted based on factors such as physical activity level, muscle-building goals, and age-related muscle preservation.\nThe calculation follows a protein intake range commonly recommended for individuals engaging in moderate physical activity and muscle gain goals.")
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
                                 .fixedSize(horizontal: false, vertical: true)
@@ -93,7 +93,7 @@ struct SourcesView: View {
                             // EFSA
                             SourceItem(
                                 title: "• European Food Safety Authority (EFSA)",
-                                description: "Protein requirements can vary depending on body composition and biological sex.",
+                                description: "Protein requirements can vary depending on body composition.",
                                 link: "https://www.efsa.europa.eu/en/efsajournal/pub/2557"
                             )
                         }
