@@ -55,8 +55,6 @@ struct SavedProfileDetailView: View {
                         // Age (Text field look - no arrow)
                         ReadOnlyField(text: "\(profile.input.age)")
                         
-                        // Sex (Dropdown look)
-                        ReadOnlyDropdown(text: profile.input.sex.description)
                         
                         // Activity (Dropdown look)
                         ReadOnlyDropdown(text: profile.input.activity.description)
