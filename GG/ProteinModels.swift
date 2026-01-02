@@ -2,21 +2,6 @@ import Foundation
 
 // MARK: - Enums
 
-enum Sex: String, CaseIterable, Codable, CustomStringConvertible {
-    case male = "Male"
-    case female = "Female"
-    case other = "Other"
-    
-    var adjustment: Double {
-        switch self {
-        case .male: return 0.1
-        case .female: return 0.0
-        case .other: return 0.05
-        }
-    }
-    
-    var description: String { rawValue }
-}
 
 enum ActivityLevel: String, CaseIterable, Codable, CustomStringConvertible {
     case sedentary = "Sedentary"
@@ -66,7 +51,6 @@ enum UnitSystem: String, CaseIterable, Codable, CustomStringConvertible {
 struct ProteinInputData: Codable {
     var weight: Double
     var age: Int
-    var sex: Sex
     var activity: ActivityLevel
     var goal: Goal
     var unitSystem: UnitSystem
@@ -83,6 +67,7 @@ struct SavedProfile: Identifiable, Codable {
 // MARK: - Logic
 
 struct ProteinCalculator {
+
     static func calculateProteinFactor(input: ProteinInputData) -> Double {
         let ageAdjustment: Double
         if input.age < 30 {
@@ -93,7 +78,7 @@ struct ProteinCalculator {
             ageAdjustment = 0.1
         }
         
-        return input.goal.factor + input.activity.adjustment + ageAdjustment + input.sex.adjustment
+        return input.goal.factor + input.activity.adjustment + ageAdjustment
     }
     
     static func calculateDailyProtein(input: ProteinInputData) -> Double {
