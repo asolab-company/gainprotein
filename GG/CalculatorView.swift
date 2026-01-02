@@ -97,12 +97,6 @@ struct CalculatorView: View {
                                 }
                             }
                             
-                            // Sex
-                            DarkPickerMenu(
-                                title: "Sex",
-                                selection: $viewModel.sex,
-                                options: Sex.allCases
-                            )
                             
                             // Activity
                             DarkPickerMenu(
