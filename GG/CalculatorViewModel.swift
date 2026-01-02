@@ -5,7 +5,7 @@ class CalculatorViewModel: ObservableObject {
     // Inputs
     @Published var weightString: String = ""
     @Published var ageString: String = ""
-    @Published var sex: Sex? = nil
+
     @Published var activity: ActivityLevel? = nil
     @Published var goal: Goal? = nil
     @Published var unitSystem: UnitSystem? = nil
@@ -15,7 +15,6 @@ class CalculatorViewModel: ObservableObject {
     var isFormValid: Bool {
         return !weightString.isEmpty &&
                !ageString.isEmpty &&
-               sex != nil &&
                activity != nil &&
                goal != nil &&
                unitSystem != nil &&
@@ -42,7 +41,6 @@ class CalculatorViewModel: ObservableObject {
     func calculate() {
         guard let weight = Double(weightString),
               let age = Int(ageString),
-              let sex = sex,
               let activity = activity,
               let goal = goal,
               let unitSystem = unitSystem else {
@@ -52,7 +50,6 @@ class CalculatorViewModel: ObservableObject {
         let input = ProteinInputData(
             weight: weight,
             age: age,
-            sex: sex,
             activity: activity,
             goal: goal,
             unitSystem: unitSystem
@@ -67,7 +64,6 @@ class CalculatorViewModel: ObservableObject {
               let weight = Double(weightString),
               let age = Int(ageString),
               !profileName.isEmpty,
-              let sex = sex,
               let activity = activity,
               let goal = goal,
               let unitSystem = unitSystem else { return }
@@ -75,7 +71,6 @@ class CalculatorViewModel: ObservableObject {
         let input = ProteinInputData(
             weight: weight,
             age: age,
-            sex: sex,
             activity: activity,
             goal: goal,
             unitSystem: unitSystem
@@ -93,7 +88,7 @@ class CalculatorViewModel: ObservableObject {
         profileName = ""
         weightString = ""
         ageString = ""
-        self.sex = nil
+
         self.activity = nil
         self.goal = nil
         self.unitSystem = nil
